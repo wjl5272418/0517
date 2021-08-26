@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./stylesheets/个人资料.css">
+    <script src="./javascripts/remstyle.js"></script>
+    <script src="./javascripts/个人资料.js"></script>
+</head>
+<body>
+    <div class="page">
+        <div class="sub-header">
+            <div class="back"></div>
+            <div class="title">个人资料</div>
+            <div class="rigth-btn">保存</div>
+        </div>
+        <div class="main">
+            <ul class="head">
+                <li>头像</li>
+                <li><img src="./images/user/my/default-head.png" alt=""><input type="file"></li>
+            </ul>
+            <ul class="list">
+                <li>昵称</li>
+                <li><input type="text" placeholder="请设置昵称"></li>
+                <li class="arrow"></li>
+            </ul>
+            <ul class="list">
+                <li>性别</li>
+                <li><input type="text" placeholder="请选择性别" readonly = 'readonly'></li>
+                <li class="arrow"></li>
+            </ul>
+        </div>
+        <div class="van-overlay" style="z-index: 2028;"></div>
+        <div class="van-popup" style="z-index: 2029;">
+            <div class="van-action-sheet__header">
+                请选择性别
+                <span class="van-icon-close">×</span>
+            </div>
+           <button class="van-hairline--top">
+               <span class="van-action-sheet__name">男</span>
+           </button>
+           <button class="van-hairline--top">
+                <span class="van-action-sheet__name">女</span>
+            </button>
+            <button class="van-action-sheet__cancel van-hairline--top">
+                取消
+            </button>
+        </div>
+    </div>
+    <div class="load"></div>
+</body>
+</html>

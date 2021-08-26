@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./javascripts/remstyle.js"></script>
+    <link rel="stylesheet" href="./stylesheets/注册.css">
+    <script src="./javascripts/注册.js"></script>
+    <script src="./javascripts/template-web.js"></script>
+	<script src="./javascripts/axios.js"></script>
+	<script src="./javascripts/better-scroll.js"></script>
+</head>
+<body>
+    <div class="page">
+        <div class="sub-header">
+            <div class="back"></div>
+            <div class="title">会员注册</div>
+        </div>
+        <div class="main">
+            <div class="inputs">
+                <input type="text" placeholder="验证码">
+                <div class="vcode-img">
+                   <img src="./images/home/index/vcode.jpg" alt="">
+                </div>
+            </div>
+            <div class="cellphone-wrap">
+                <div class="cellphone">
+                    <input type="number" placeholder="请输入手机号">
+                </div>
+               <button class="code-btn" disabled = 'disabled'>获取短信验证码</button>
+            </div>
+            <div class="code-wrap">
+                <input type="text" placeholder="请输入短信验证码">
+            </div>
+            <div class="password-wrap">
+                <div class="password">
+                    <input type="password" placeholder="请输入密码">
+                </div>
+                <div class="switch-wrap">
+                    <div class="van-switch" role="switch" aria-checked="false">
+                        <div class="van-switch_node"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="sure-btn">注册</div>
+            <!-- <button type="button" disabled="disabled" style="background-color: aqua; padding: .5rem 2rem;" >点击</button> -->
+        </div>
+    </div>
+    <div class="load"></div>
+    <div class="van-toast .van-toast-text">
+        <div class="van-toast_text">请输入图文验证码</div>
+    </div>
+</body>
+</html>

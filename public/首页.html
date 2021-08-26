@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" href="./stylesheets/首页.css">
+		<link rel="stylesheet" href="./javascripts/swiper-bundle.min.css">
+		<script src="./javascripts/swiper-bundle.min.js"></script>
+		<script src="./javascripts/jquery3.3.1.js"></script>
+		<script src="./javascripts/公共部分.js"></script>
+		<script src="./javascripts/首页.js"></script>
+		<script src="./javascripts/remstyle.js"></script>
+		<script src="./javascripts/template-web.js"></script>
+		<script src="./javascripts/axios.js"></script>
+		<script src="./javascripts/better-scroll.js"></script>
+	</head>
+	<body>
+		<div id="box-a" class="box">
+	<!-- 顶部导航 -->
+			<div id="nav-top">
+				<ul>
+					<li><img src="images/common/class.png" ></li>
+					<li><input type="text" id="search" placeholder="请输入宝贝名称" /></li>
+					<li>登录</li>
+				</ul>
+			</div>
+			
+			<!-- 轮播图 -->
+			<div class="swiper-container">
+				 <div class="swiper-wrapper">
+					 <div class="swiper-slide"><img src="images/home/index/banner_1.jpg" ></div>
+					 <div class="swiper-slide"><img src="images/home/index/banner_2.jpg" ></div>
+					 <div class="swiper-slide"><img src="images/home/index/banner_3.jpg" ></div>
+				 </div>
+				 <!-- 分页器 -->
+				<div class="swiper-pagination"></div>
+			 </div>
+			 <!-- 导航等组件可以放在container之外 -->
+			 <script>        
+				var mySwiper = new Swiper ('.swiper-container', {
+				 autoplay:true,
+				 // loop: true, // 循环模式选项
+				 // speed:500,
+				 effect:"flip",
+				 // 如果需要分页器
+				 pagination: {
+				   el: '.swiper-pagination',
+				 },
+			   }) 
+			</script>
+
+			<!-- 分类 -->
+			<div class="sort">
+				<ul class="sorts-list">
+				</ul>
+			</div>
+			<!-- 导航栏 -->
+			<script id="tpl-sortsList" type="textml">
+				{{each ids}}
+					<li>
+						<img src="{{$value.image}}" alt="">
+						<p>{{$value.title}}</p>
+					</li>
+				{{/each}}
+			</script>
+			<script>
+				var sortslist=document.querySelector(".sorts-list")
+					axios.get("/list").then((res)=>{
+						// console.log(res.data.ids[0])
+						// console.log(res.data.ids[0].cid)
+					sortslist.innerHTML=template("tpl-sortsList",res.data)
+					var oli = sortslist.querySelectorAll('li')
+					var opage = document.querySelector('.page');
+					var oboxa = document.getElementById('box-a');
+					var navbottom = document.getElementById('nav-bottom');
+					for(let i = 0; i < oli.length; i++){
+						oli[i].onclick = function(){
+							console.log(i)
+							oboxa.style.display = 'none';
+        					navbottom.style.display = 'none';
+							opage.style.display = 'block';
+						}
+
+					}
+				})
+			</script>
+
+			<!-- 潮流女装 -->
+			<div class="woman-box">
+				</div>
+				<script id="tpl-womanshoesList" type="text/html">
+					{{each}}
+					<p class="woman-box-top">——{{$value[0].title}}——</p>
+					<div class="box-a">
+						<div id="womanShoes" class="womanShoes-b boxa">
+							<p>{{$value[0].items[0].title}}</p>
+							<p><span>精品打折</span><span>12.8元</span></p>
+							<img src="{{$value[0].items[0].image}}" alt="">
+						</div>
+							<div class="womanShoes-b">
+								<div class="bow boxa">
+									<ul>
+										<li>{{$value[0].items[1].title}}</li>
+										<li>品质精挑</li>
+									</ul>
+									<img src="{{$value[0].items[1].image}}" alt="" >
+								</div>
+								<div  class="bow boxa">
+									<ul>
+										<li>{{$value[0].items[2].title}}</li>
+										<li>品质精挑</li>
+									</ul>
+									<img src="{{$value[0].items[2].image}}" alt="">
+								</div>
+							</div>
+						</div>
+					{{/each}}
+				</script>
+				<script>
+					var womanbox=document.querySelector(".woman-box")
+						axios.get('/list2').then((res)=>{
+							// console.log(res.data.ids[0].items[0].gid);
+							womanbox.innerHTML=template("tpl-womanshoesList",res.data);
+						})
+				</script>
+
+				<div class="type">
+					<ul class="type-ul">
+					</ul>
+				</div>
+				<script id="tpl-typelist" type="text/html">
+					{{each}}
+					<li class="boxa">
+						<p>{{$value[0].items[3].title}}</p>
+						<img src="{{$value[0].items[3].image}}" alt="" >
+						<p>￥{{$value[0].items[3].price}}</p>
+						<s>￥576</s>
+					</li>
+					<li class="boxa">
+						<p>{{$value[0].items[4].title}}</p>
+						<img src="{{$value[0].items[4].image}}" alt="" >
+						<p>￥{{$value[0].items[4].price}}</p>
+						<s>￥560</s>
+					</li>
+					<li class="boxa">
+						<p>{{$value[0].items[5].title}}</p>
+						<img src="{{$value[0].items[5].image}}" alt="">
+						<p>￥{{$value[0].items[5].price}}</p>
+						<s>￥600</s>
+					</li>
+					<li class="boxa">
+						<p>{{$value[0].items[6].title}}</p>
+						<img src="{{$value[0].items[6].image}}" alt="">
+						<p>￥{{$value[0].items[6].price}}</p>
+						<s>￥400</s>
+					</li>
+					{{/each}}
+				</script>
+				<script>
+					var typeul=document.querySelector(".type-ul")
+						axios.get('/list2').then((res)=>{
+							typeul.innerHTML=template("tpl-typelist",res.data);
+							var boxa = document.querySelectorAll('.boxa');
+							for(let i = 0; i < boxa.length; i++){
+								boxa[i].onclick = function(){
+									window.localStorage.setItem('aa',res.data.ids[0].items[i].gid);
+									window.location.href = '商品详情.html';
+								}
+							}
+						})
+				</script>
+
+				<!-- 品牌男装 -->
+			<div class="man-box">
+			</div>
+			<script id="tpl-manbox" type="text/html">
+				{{each}}
+					<p class="man-box-top">——{{$value[1].title}}——</p>
+					<div class="box-b">
+						<div id="manShoes" class="manShoes-b boxc">
+							<p>{{$value[1].items[0].title}}</p>
+							<p>火爆开售</p>
+							<img src="{{$value[1].items[0].image}}" alt="">
+						</div>
+						<div id="manShoes" class="manShoes-b boxc">
+							<p>{{$value[1].items[1].title}}</p>
+							<p>火爆开售</p>
+							<img src="{{$value[1].items[1].image}}" alt="">
+						</div>
+					</div>
+				{{/each}}
+			</script>
+			<script>
+				var manbox=document.querySelector(".man-box")
+					axios.get('/list2').then((res)=>{
+						manbox.innerHTML=template("tpl-manbox",res.data)
+					})
+			</script>
+				<div class="type-man">
+					<ul class="type-man-ul">
+					</ul>
+				</div>
+				<script id="tpl-typemanlist" type="text/html">
+					{{each}}
+						<li class="boxc">
+							<p>{{$value[1].items[2].title}}</p>
+							<img src="{{$value[1].items[2].image}}" alt="">
+							<p>￥{{$value[1].items[2].price}}</p>
+							<s>￥138</s>
+						</li>
+						<li class="boxc">
+							<p>{{$value[1].items[3].title}}</p>
+							<img src="{{$value[1].items[3].image}}" alt="">
+							<p>￥{{$value[1].items[3].price}}</p>
+							<s>￥156</s>
+						</li>
+						<li class="boxc">
+							<p>{{$value[1].items[4].title}}</p>
+							<img src="{{$value[1].items[4].image}}" alt="">
+							<p>￥{{$value[1].items[4].price}}</p>
+							<s>￥238</s>
+						</li>
+						<li class="boxc">
+							<p>{{$value[1].items[5].title}}</p>
+							<img src="{{$value[1].items[5].image}}" alt="">
+							<p>￥{{$value[1].items[5].price}}</p>
+							<s>￥1556</s>
+						</li>
+					{{/each}}
+				</script>
+				<script>
+					var typemanul=document.querySelector(".type-man-ul")
+						axios.get('/list2').then((res)=>{
+							typemanul.innerHTML=template("tpl-typemanlist",res.data)
+							var boxc = document.querySelectorAll('.boxc');
+							for(let i = 0; i < boxc.length; i++){
+								boxc[i].onclick = function(){
+									window.localStorage.setItem('aa',res.data.ids[1].items[i].gid);
+									window.location.href = '商品详情.html';
+								}
+							}
+						})
+				</script>
+
+				<!-- 电脑办公 -->
+				<div class="computer-box">
+				</div>
+				<script id="tpl-computerbox" type="text/html">
+					{{each}}
+					<div class="computer">
+						<p class="computer-top">——{{$value[2].title}}——</p>
+						<div class="box-c">
+							<div id="office" class="office-b boxd">
+								<p>{{$value[2].items[0].title}}</p>
+								<p><span>精品打折</span><span>4599元</span></p>
+								<img src="{{$value[2].items[0].image}}" alt="">
+							</div>
+								<div class="office-b">
+									<div class="bow-b boxd">
+										<ul>
+											<li>{{$value[0].items[1].title}}</li>
+											<li>品质精挑</li>
+										</ul>
+										<img src="{{$value[2].items[1].image}}" alt="">
+									</div>
+									<div  class="bow-b boxd">
+										<ul>
+											<li>{{$value[2].items[2].title}}</li>
+											<li>品质精挑</li>
+										</ul>
+										<img src="{{$value[2].items[2].image}}" alt="">
+									</div>
+								</div>
+						</div>
+					</div>
+					<div class="type-computer">
+						<ul class="type-computer-ul">
+							<li class="boxd">
+								<p>{{$value[2].items[3].title}}</p>
+								<img src="{{$value[2].items[3].image}}" alt="">
+								<p>￥{{$value[2].items[3].price}}</p>
+								<s>￥576</s>
+							</li>
+							<li class="boxd">
+								<p>{{$value[2].items[4].title}}</p>
+								<img src="{{$value[2].items[4].image}}" alt="">
+								<p>￥{{$value[2].items[4].price}}</p>
+								<s>￥560</s>
+							</li>
+							<li class="boxd">
+								<p>{{$value[2].items[5].title}}</p>
+								<img src="{{$value[0].items[5].image}}" alt="">
+								<p>￥{{$value[2].items[5].price}}</p>
+								<s>￥600</s>
+							</li>
+							<li class="boxd">
+								<p>{{$value[2].items[6].title}}</p>
+								<img src="{{$value[2].items[6].image}}" alt="">
+								<p>￥{{$value[2].items[6].price}}</p>
+								<s>￥400</s>
+							</li>
+						</ul>
+					</div>
+					{{/each}}
+				</script>
+				<script>
+					var computerbox=document.querySelector(".computer-box")
+						axios.get('/list2').then((res)=>{
+							computerbox.innerHTML=template("tpl-computerbox",res.data);
+							var boxd = document.querySelectorAll('.boxd');
+							for(let i = 0; i < boxd.length; i++){
+								boxd[i].onclick = function(){
+									window.localStorage.setItem('aa',res.data.ids[2].items[i].gid);
+									window.location.href = '商品详情.html';
+								}
+							}
+						})
+				</script>
+
+				<!-- 为您推荐 -->
+				<div class="goods-recom-nav">
+					<div class="line"></div>
+					<div class="recom-wrap">
+						<div class="icon"></div>
+						<div class="text">为您推荐</div>
+					</div>
+					<div class="line"></div>
+				</div>
+				<div class="goods-recom">
+				</div>
+				<script id="tpl-goodsrecom" type="text/html">
+					{{each}}
+					<div class="goods-list">
+						<div class="goods-image"><img src="{{$value[0].image}}" alt=""></div>
+						<div class="goods-title">{{$value[0].title}}</div>
+						<div class="goods-price">￥{{$value[0].price}}</div>
+					</div>
+					<div class="goods-list">
+						<div class="goods-image"><img src="{{$value[1].image}}" alt=""></div>
+						<div class="goods-title">{{$value[1].title}}</div>
+						<div class="goods-price">￥{{$value[1].price}}</div>
+					</div>
+					<div class="goods-list">
+						<div class="goods-image"><img src="{{$value[2].image}}" alt=""></div>
+						<div class="goods-title">{{$value[2].title}}</div>
+						<div class="goods-price">￥{{$value[2].price}}</div>
+					</div>
+					<div class="goods-list">
+						<div class="goods-image"><img src="{{$value[3].image}}" alt=""></div>
+						<div class="goods-title">{{$value[3].title}}</div>
+						<div class="goods-price">￥{{$value[3].price}}</div>
+					</div>
+					<div class="goods-list">
+						<div class="goods-image"><img src="{{$value[4].image}}" alt=""></div>
+						<div class="goods-title">{{$value[4].title}}</div>
+						<div class="goods-price">￥{{$value[4].price}}</div>
+					</div>
+					<div class="goods-list">
+						<div class="goods-image"><img src="{{$value[5].image}}" alt=""></div>
+						<div class="goods-title">{{$value[5].title}}</div>
+						<div class="goods-price">￥{{$value[5].price}}</div>
+					</div>
+					<div class="goods-list">
+						<div class="goods-image"><img src="{{$value[6].image}}" alt=""></div>
+						<div class="goods-title">{{$value[6].title}}</div>
+						<div class="goods-price">￥{{$value[6].price}}</div>
+					</div>
+					<div class="goods-list">
+						<div class="goods-image"><img src="{{$value[7].image}}" alt=""></div>
+						<div class="goods-title">{{$value[7].title}}</div>
+						<div class="goods-price">￥{{$value[7].price}}</div>
+					</div>
+					<div class="goods-list">
+						<div class="goods-image"><img src="{{$value[8].image}}" alt=""></div>
+						<div class="goods-title">{{$value[8].title}}</div>
+						<div class="goods-price">￥{{$value[8].price}}</div>
+					</div>
+					<div class="goods-list">
+						<div class="goods-image"><img src="{{$value[9].image}}" alt=""></div>
+						<div class="goods-title">{{$value[9].title}}</div>
+						<div class="goods-price">￥{{$value[9].price}}</div>
+					</div>
+					<div class="goods-list">
+						<div class="goods-image"><img src="{{$value[10].image}}" alt=""></div>
+						<div class="goods-title">{{$value[10].title}}</div>
+						<div class="goods-price">￥{{$value[10].price}}</div>
+					</div>
+					<div class="goods-list">
+						<div class="goods-image"><img src="{{$value[11].image}}" alt=""></div>
+						<div class="goods-title">{{$value[11].title}}</div>
+						<div class="goods-price">￥{{$value[11].price}}</div>
+					</div>
+					{{/each}}
+				</script>
+				<script>
+					var goodsrecom=document.querySelector(".goods-recom")
+						axios.get('/list3').then((res)=>{
+							goodsrecom.innerHTML=template("tpl-goodsrecom",res.data)
+							var goodslist = goodsrecom.getElementsByClassName('goods-list');	
+							for(let i = 0; i < goodslist.length; i++){
+								goodslist[i].onclick = function(){
+									window.localStorage.setItem('aa',res.data.ids[i].gid);
+									window.location.href="商品详情.html";
+								}
+							}
+						})
+				</script>
+			</div>
+
+			<!-- 搜索部分 -->
+			<div class="search-component">
+				<div class="search-header">
+					<div class="close"></div>
+					<div class="search-wrap">
+						<div class="search-input-wrap">
+							<input type="text" placeholder="请输入宝贝名称" class="searchb">
+						</div>
+						<button class="search-btn"></button>
+					</div>
+				</div>
+				<div class="search-main">
+					<div class="search-title-wrap">
+						<div class="search-title">最近搜索</div>
+						<div class="bin"></div>
+					</div>
+					<div class="search-keywords-wrap">
+						<div class="keywords">连衣裙</div>
+					</div>
+				</div>
+				<div class="search-main">
+					<div class="search-title-wrap">
+						<div class="search-title">热门搜索</div>
+					</div>
+					<div class="search-keywords-wrap">
+					</div>
+				</div>
+			</div>
+			
+			<div class="van-overlay" style="display: none;">
+				<div class="clearmess">
+					<div class="clearmess-title">确认要删除吗?</div>
+					<div class="clearmess-bottom">
+						<div class="clearmess-left">取消</div>
+						<div class="clearmess-right">确定</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- 分类 -->
+			<div class="page">
+				<div class="search-header">
+					<div class="back"></div>
+					<div class="search">请输入宝贝名称</div>
+				</div>
+				<div class="goods-main">
+					<div id="aaaa">
+						<ul class="classify-wrap">
+							
+						</ul>
+					</div>
+					
+
+					<!-- 右边栏 -->
+					<div class="goods-content">
+						<div class="goods-content-main">
+							
+						</div>
+						<div class="no-data">没有相关商品</div>
+						
+						<script>
+							var classifywrap=document.querySelector(".classify-wrap");
+							var xhrc = new XMLHttpRequest();
+							xhrc.open('get','http://vueshop.glbuys.com/api/home/category/menu?token=1ec949a15fb709370f');
+							xhrc.send();
+							xhrc.onreadystatechange = function(){
+								if(this.readyState === 4){
+									cc = JSON.parse(xhrc.response);
+									for(var d = 0; d < cc.data.length; d++){
+										classifywrap.innerHTML +=
+											`
+												<li class="classify-item">
+													${cc.data[d].title}
+												</li>
+										
+											`
+										
+									}
+									 //滚动	
+								initBScroll('#aaaa');
+								function initBScroll(code) {
+										var tag = document.querySelector(code);
+										var bs = BetterScroll.createBScroll(tag, {
+											pullDownRefresh: {
+												threshold: 30,
+											},
+											pullUpLoad: {
+												threshold: -30,
+											},
+											click: true,
+										});
+										bs.on("pullingDown", () => {
+											bs.finishPullDown();
+											bs.refresh();
+										});
+										bs.on("pullingUp", () => {
+											bs.finishPullDown();
+											bs.refresh();
+										});
+									}
+
+									var classifyitem = document.querySelectorAll('.classify-item');
+									var goodscontentmain = document.querySelector('.goods-content-main')
+										console.log(goodscontentmain)
+										classifyitem[0].className = 'classify-item active';
+										goodscontentmain.style.display = 'block';
+										// console.log(mm.data[0].goods)
+
+										var classifyitem = document.querySelectorAll('.classify-item');
+										for(let i = 0; i < classifyitem.length; i++){
+											classifyitem[i].index = i;
+											classifyitem[i].onclick = function(){
+												for(var j = 0; j < classifyitem.length; j++){
+													classifyitem[j].className = 'classify-item';
+												}
+												this.className = 'classify-item active'
+												ee = 492 + this.index
+												console.log(ee)
+												if(ee > 495){
+													document.querySelector('.no-data').style.display = 'block';
+													document.querySelector('.goods-content-main').style.display = 'none'
+												}else if(ee >= 492 && ee <= 495){
+													document.querySelector('.no-data').style.display = 'none';
+													document.querySelector('.goods-content-main').style.display = 'block'
+												}
+												var gcmn = document.querySelector('.goods-content-main');
+												var goodsitemswrap = document.querySelectorAll('.goods-items-wrap')
+												gcmn.innerHTML = '';
+												var xhrm = new XMLHttpRequest();
+												xhrm.open('get','http://vueshop.glbuys.com/api/home/category/show?cid=' + ee + '&token=1ec949a15fb709370f');
+												xhrm.send();
+												xhrm.onreadystatechange = function(){
+													if(this.readyState === 4){
+														mm = JSON.parse(xhrm.response);
+														if(mm.data == '没有数据'){
+															gcmn.innerHTML += '';
+														}else{
+															for(var i = 0; i < mm.data.length; i++){
+															gcmn.innerHTML +=
+															`
+															<div class="goods-wrap">
+																<div class="classify-name">${mm.data[i].title}</div>
+															</div>
+															<div class="goods-items-wrap">
+																
+															</div>
+															`
+															// console.log(mm.data[i].goods[1].title)
+															var goodsitemswrap = document.querySelectorAll('.goods-items-wrap')[i];
+															console.log(goodsitemswrap)
+																for(var j = 0; j < mm.data[i].goods.length; j++){
+																	if(mm.data[i].goods)
+																	goodsitemswrap.innerHTML += 
+																	`
+																	<ul>
+																		<li><img src="${mm.data[i].goods[j].image}" alt=""></li>
+																		<li>${mm.data[i].goods[j].title}</li>
+																	</ul>
+																	`
+																}
+																console.log(mm.data[i])
+																var oul = gcmn.querySelectorAll('ul');
+																	console.log(oul.length)
+																	for(let d = 0; d < oul.length; d++){
+																		oul[d].onclick = function(){
+																			console.log(d)
+																			for(let b = 0; b < mm.data.length; b++){
+																				console.log(mm.data[b])
+																				for(let o = 0; o < mm.data[0].goods.length; o++){
+																					console.log(mm.data[0].goods[d].gid)
+																					window.localStorage.setItem('aa',mm.data[0].goods[d].gid);
+																					window.location.href="商品详情.html";
+																				}
+																			}
+																		}
+																	}
+																	
+															}
+															
+														}
+														
+													}
+												}
+											}
+										}
+
+								}
+								
+							}
+							
+						</script>
+					</div>
+				</div>
+			</div>
+
+
+		<!-- 底部导航 -->
+			<div id="nav-bottom">
+				<div class="bottom-nav">
+					<dl>
+						<a href="./首页.html">
+							<dt></dt>
+							<dd>首页</dd>
+						</a>	
+					</dl>
+					<dl>
+						<a href="./购物车.html">
+							<dt></dt>
+							<dd>购物车</dd>
+						</a>
+					</dl>
+					<dl>
+						<a href="./我的.html">
+							<dt></dt>
+							<dd>我的</dd>
+						</a>
+					</dl>
+				</div>
+			</div>
+	</body>
+</html>

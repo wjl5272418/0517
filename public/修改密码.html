@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./stylesheets/修改密码.css">
+    <script src="./javascripts/remstyle.js"></script>
+    <script src="./javascripts/修改密码.js"></script>
+</head>
+<body>
+    <div class="page">
+        <div class="sub-header">
+            <div class="back"></div>
+            <div class="title">修改密码</div>
+        </div>
+        <div class="main">
+            <div class="input-wrap">
+                <input type="password" placeholder="请输入不小于6位的密码" class="password">
+                <div class="switch-wrap">
+                    <div role="switch" aria-checked="false" class="van-switch">
+                        <div class="van-switch__node"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="save-btn">提交</div>
+        </div>
+    </div>
+    <div class="load" style="display: none;"></div>
+    <div class="van-toast van-toast-text van-toast-middle" style="z-index: 2012; display: none;">
+        <div class="van-toast_text">请输入密码</div>
+    </div>
+</body>
+</html>

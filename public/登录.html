@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./javascripts/remstyle.js"></script>
+    <script src="./javascripts/公共部分.js"></script>
+    <script src="./javascripts/登录.js"></script>
+    <link rel="stylesheet" href="./stylesheets/登录.css">
+</head>
+<body>
+    <div class="page">
+        <div class="sub-header">
+            <div class="back"></div>
+            <div class="title">会员登陆</div>
+        </div>
+        <div class="main login-main">
+            <div class="code-wrap">
+                <input type="text" placeholder="手机号">
+            </div>
+            <div class="password-wrap">
+                <div class="password">
+                    <input type="password" placeholder="密码" type="password">
+                </div>
+                <div class="switch-wrap">
+                    <div class="van-switch" aria-checked="false" role="switch">
+                        <div class="van-switch_node"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="sure-btn">登录</div>
+            <div class="fastreg-wrap">
+                <div>
+                    <img src="./images/home/index/forget.png" alt="忘记密码">
+                    "忘记密码"
+                </div>
+                <div>
+                    <a href="./注册.html">
+                        <img src="./images/home/index/reg.png" alt="忘记密码">
+                        "快速注册"
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="load"></div>
+    <div class="van-toast van-toast-text van-toast-middle">
+        <div class="van-toast_text">您输入的用户名不存在</div>
+    </div>
+</body>
+</html>

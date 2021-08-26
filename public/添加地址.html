@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./stylesheets/添加地址.css">
+    <link rel="stylesheet" href="./地址插件css/demo.css">
+    <link rel="stylesheet" href="./地址插件css/ydui.css">
+    <script src="./javascripts/remstyle.js"></script>
+    <script src="./javascripts/添加地址.js"></script>
+   <script src="./javascripts/jquery3.3.1.js"></script>
+</head>
+<body>
+    <div class="page">
+        <div class="sub-header">
+            <div class="back"></div>
+            <div class="title">添加收货地址</div>
+            <div class="right-btn">删除</div>
+        </div>
+        <div class="main">
+            <ul>
+                <li>收货人</li>
+                <li><input type="text" placeholder="收货人姓名"></li>
+            </ul>
+            <ul>
+                <li>联系方式</li>
+                <li><input type="text" placeholder="联系人手机号"></li>
+            </ul>
+            <ul>
+                <li>所在地区</li>
+                <li><input type="text" class="area" readonly placeholder="请选择所在地区" ></li>
+            </ul>
+            <ul>
+                <li>详细地址</li>
+                <li><input type="text" placeholder="街道详细地址"></li>
+            </ul>
+            <ul>
+                <li>设置为默认地址</li>
+                <li><input type="checkbox"></li>
+            </ul>
+            <button class="submit-save">保存</button>
+        </div>
+        <div class="van-overlay"></div>
+    </div>
+    <div class="van-toast .van-toast-text">
+        <div class="van-toast_text">请输入收货人姓名</div>
+    </div>
+
+
+    <div class="pageb">
+        <div class="sub-header">
+            <div class="back"></div>
+            <div class="title">收货地址管理</div>
+        </div>
+        <div class="main">
+            <!-- <div class="list">
+                <div class="name-wrap">
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="address">
+                    <span></span>
+                </div>
+                <div class="right-arrow"></div>
+            </div> -->
+            
+        </div>
+        <div style="width: 100%; height: 1.3rem;" class="mainb"></div>
+        <div class="add-btn">+ 添加新地址</div>
+        <div class="load"></div>
+    </div>
+    <script src="./地址插件js/jquery.min.js"></script>
+    <script src="./地址插件js/ydui.citys.js"></script>
+    <script src="./地址插件js/ydui.flexible.js"></script>
+    <script src="./地址插件js/ydui.js"></script>
+</body>
+</html>

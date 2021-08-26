@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./javascripts/swiper-bundle.min.css">
+    <link rel="stylesheet" href="./stylesheets/商品详情.css">
+    <script src="./javascripts/swiper-bundle.min.js"></script>
+    <script src="./javascripts/商品详情.js"></script>
+    <script src="./javascripts/remstyle.js"></script>
+    <script src="./javascripts/jquery3.3.1.js"></script>
+    <script src="./javascripts/template-web.js"></script>
+	<script src="./javascripts/axios.js"></script>
+	<script src="./javascripts/better-scroll.js"></script>
+</head>
+<body>
+    <div class="details-header">
+        <div class="back"></div>
+        <div class='tab-wrap'>
+            <div class="tab-name active">商品</div>
+            <div class="tab-name">详情</div>
+            <div class="tab-name">评价</div>
+        </div>
+        <div id="cart-icon" class="cart-icon">
+            <div class="sport"></div>
+        </div>
+    </div>
+
+    <!-- 商品页面 -->
+    <div class="page">
+        <!-- 轮播图 -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!-- <div class="swiper-slide"><img src="" ></div> -->
+            </div>
+            <!-- 分页器 -->
+            <div class="swiper-pagination"></div>
+        </div>
+
+        <div class="goods-ele-main">
+            <div class="goods-title"></div>
+            <div class="price"></div>
+            <ul class="sales-wrap">
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+       
+        <!-- 评价 -->
+        <div class="reviews-main">
+            <div class="reviews-title"></div>
+            <div class="reviews-box"></div>
+            <div class="reviews-more">查看更多评价</div>
+            <div class="no-data" style="display: none;">暂无评价！</div>
+        </div>
+        <div class="bottom-btn-wrap">
+            <div class="btn fav">收藏</div>
+            <div class="btn cart">加入购物车</div>
+        </div>
+
+        <!-- 加入购物车 -->
+        <div class="mask"></div>
+        <div class="cart-panel up">
+            <div class="goods-info">
+                <div class="close-panel-wrap">
+                    <div class="spot"></div>
+                    <div class="line"></div>
+                    <div class="close"></div>
+                </div>
+                <div class="goods-img">
+                    <img src="" alt="">
+                </div>
+                <div class="goods-wrap">
+                    <div class="goods-title"></div>
+                    <div class="price"></div>
+                    <div class="goods-code"></div>
+                </div>
+            </div>
+            <div class="attr-wrap">
+                <div class="attr-list">
+                    <div class="attr-name"></div>
+                    <div class="val-wrap" id="val-wrap1"></div>
+                </div>
+                <div class="attr-list">
+                    <div class="attr-name"></div>
+                    <div class="val-wrap" id="val-wrap2"></div>
+                </div>
+            </div>
+            <div class="amount-wrap">
+                <div class="amount-name">购买数量</div>
+                <div class="amount-input-wrap">
+                    <div class="btn dec active">-</div>
+                    <div class="amount-input">
+                        <input type="tel" value="1">
+                    </div>
+                    <div class="btn inc">+</div>
+                </div>
+            </div>
+            <div class="sure-btn">确定</div>
+        </div>
+        <div class="van-toast van-toast-middle van-toast-text">
+            <div class="van-toast_text">请选择颜色</div>
+        </div>
+    </div>
+   
+
+    <!-- 详情页面 -->
+    <div class="page">
+        <div class="content">
+            <span style="color: #ffa500;"></span>
+            <br>
+            <br>
+            <span style="color: #0000ff;">
+            </span>
+            <br>
+            <br>
+            <img src="" alt="" style="width: 100%;">
+            <br><br>
+            <img src="" alt="" style="width: 100%;">
+            <br>
+        </div>
+    </div>
+
+    <!-- 评论页面 -->
+    <div class="page">
+        <div class="reviews-main">
+            <div class="reviews-title"></div>
+            <div class="reviews-box"></div>
+            <div class="no-data" style="display: none;">暂无评价！</div>
+        </div>
+    </div>
+
+</body>
+</html>
